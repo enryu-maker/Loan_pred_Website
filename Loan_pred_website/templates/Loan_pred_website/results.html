@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,11 +10,11 @@
     <title>Results</title>
 </head>
 
-<body>
+<body >
     <!--NAV BAR-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-          <h2 class="navbar-brand ps-3 "> Loan Predictor </h2>
+          <h2 class="navbar-brand ps-3 "> Bank Loan Predication Tool  </h2>
         </div>
       </nav>
     <!--MAIN FORM-->
@@ -21,19 +22,41 @@
         <div class="card-header text-center fw-bold">
             Predicted Results
         </div>
-        <ul class="list-group">
-            <li class="list-group-item">{{gender}}</li>
-            <li class="list-group-item">{{m_status}}</li>
-            <li class="list-group-item">{{dep}}</li>
-            <li class="list-group-item">{{edu_status}}</li>
-            <li class="list-group-item">{{self_emp}}</li>
-          </ul>
+        
         <div class="card-body">
-            <!--
-
-                    RESULTS GO HERE SOMEHOW
-
-            -->
+          <div class="col d-flex justify-content-center">
+          {% if result == 'Y'%}
+          <div class="card mb-10" style="max-width: 540px;">
+            <div class="row no-gutters">
+              <div class="col-md-4">
+                <img src="{% static 'Loan_pred_website/Approved.jpeg' %}" class="card-img">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Approved</h5>
+                  <br>
+                  <p class="card-text">The Loan Application Has been Approved</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% elif result == 'N'%}
+          <div class="card mb-3" style="max-width: 540px;">
+            <div class="row no-gutters">
+              <div class="col-md-4">
+                <img src="{% static 'Loan_pred_website/Denied.jpeg' %}" class="card-img">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Denied</h5>
+                  <br>
+                  <p class="card-text">The Loan Application Has been Denied</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+        </div>
         </div>
     </div>
     

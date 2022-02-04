@@ -10,6 +10,7 @@
 </head>
 
 <body>
+
     <!--NAV BAR-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
@@ -17,6 +18,7 @@
         </div>
       </nav>
     <!--MAIN FORM-->
+    
     <div class="card mx-5 my-3">
         <div class="card-header text-center">
             Loan Applicants Details
@@ -24,83 +26,103 @@
         <div class="card-body">
             <form action="/results" method=POST>
                 {% csrf_token %}
-                <div class="mb-2">
-                    <label class="form-label">Applicant Gender</label>
-                    <select class="form-select" name=gender>
-                        <option selected>Pick Gender</option>
-                        <option value="1">Male</option>
-                        <option value="2">Female</option>
-                    </select>
-                </div>
+                <div class="row">
+                <div class="col-md-6">
+                    <div class="text-center">
+                        <h3>
+                            <label class="form-label">Personal Details</label>
+                        </h3>
+                        <hr>
+                    </div>  
+                    <div class="mb-2">
+                        <label class="form-label">Applicant Gender</label>
+                        <select class="form-select" name=gender>
+                            <option selected>Pick Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
 
-                <div class="mb-2">
-                    <label class="form-label">Applicants Maritial Status</label>
-                    <select class="form-select" name=m_status>
-                        <option selected>Select</option>
-                        <option value="1">Single</option>
-                        <option value="2">Married</option>
-                    </select>
+                    <div class="mb-2">
+                        <label class="form-label">Applicants Maritial Status</label>
+                        <select class="form-select" name=m_status>
+                            <option selected>Select</option>
+                            <option value="No">Single</option>
+                            <option value="Yes">Married</option>
+                        </select>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label" >Dependents</label>
+                        <select class="form-select" name=dep>
+                            <option selected>Select</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Education</label>
+                        <select class="form-select" name=edu_status>
+                            <option selected>Select</option>
+                            <option value="Graduate">Graduate</option>
+                            <option value="Not Graduate">Not Graduated</option>
+                        </select>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Self Employed</label>
+                        <select class="form-select" name=self_emp>
+                            <option selected>Select</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Property Type</label>
+                        <select class="form-select" name=p_type>
+                            <option selected>Select</option>
+                            <option value="Rural">Rural</option>
+                            <option value="Urban">Urban</option>
+                            <option value="Semiurban">SemiUrban</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="mb-2">
-                    <label class="form-label" >Dependents</label>
-                    <select class="form-select" name=dep>
-                        <option selected>Select</option>
-                        <option value="1">Yes</option>
-                        <option value="2">No</option>
-                    </select>
+             
+                <div class="col-md-6">
+                    <div class="text-center ">
+                        <h3>
+                            <label class="form-label ">Financial Details</label>
+                        </h3>
+                        <hr>
+                        </div>  
+                    <label class="form-label"></label>
+                    <div class="form-floating mb-2">
+                        <input type="number" class="form-control" id="floatingInput" placeholder="0" name=income>
+                        <label for="floatingInput">Applicant Income</label>
+                    </div>
+                    <div class="form-floating mb-2">
+                        <input type="number" class="form-control" id="floatingInput" placeholder="0" name=coincome>
+                        <label for="floatingInput">Co-Applicant Income</label>
+                    </div>
+                    <div class="form-floating mb-2">
+                        <input type="number" class="form-control" id="floatingInput" placeholder="0"name=l_amount>
+                        <label for="floatingInput">Loan Amount</label>
+                    </div>
+                    <div class="form-floating mb-2">
+                        <input type="number" class="form-control" id="floatingInput" placeholder="0"name=l_term>
+                        <label for="floatingInput">Loan Term</label>
+                    </div>
+                    <div class="form-floating mb-2">
+                        <input type="number" class="form-control" id="floatingInput" placeholder="1.0"name=c_history>
+                        <label for="floatingInput">Credit History</label>
+                    </div>
                 </div>
-                <div class="mb-2">
-                    <label class="form-label">Education Completed</label>
-                    <select class="form-select" name=edu_status>
-                        <option selected>Select</option>
-                        <option value="1">Yes</option>
-                        <option value="2">No</option>
-                    </select>
-                </div>
-                <div class="mb-2">
-                    <label class="form-label">Self Employed</label>
-                    <select class="form-select" name=self_emp>
-                        <option selected>Select</option>
-                        <option value="1">Yes</option>
-                        <option value="2">No</option>
-                    </select>
-                </div>
-                <div class="mb-2">
-                    <label class="form-label">Property Type</label>
-                    <select class="form-select" name=p_type>
-                        <option selected>Select</option>
-                        <option value="1">Rural</option>
-                        <option value="2">Urban</option>
-                        <option value="2">SemiUrban</option>
-                    </select>
-                </div>
-                <hr>
-                <div class="form-floating mb-2">
-                    <input type="number" class="form-control" id="floatingInput" placeholder="0" name=income>
-                    <label for="floatingInput">Applicant Income</label>
-                </div>
-                <div class="form-floating mb-2">
-                    <input type="number" class="form-control" id="floatingInput" placeholder="0" name=income>
-                    <label for="floatingInput">Coapplicant Income</label>
-                </div>
-                <div class="form-floating mb-2">
-                    <input type="number" class="form-control" id="floatingInput" placeholder="0"name=l_amount>
-                    <label for="floatingInput">Loan Amount</label>
-                </div>
-                <div class="form-floating mb-2">
-                    <input type="number" class="form-control" id="floatingInput" placeholder="0"name=l_term>
-                    <label for="floatingInput">Loan Term</label>
-                </div>
-                <div class="form-floating mb-2">
-                    <input type="number" class="form-control" id="floatingInput" placeholder="1.0"name=c_history>
-                    <label for="floatingInput">Credit History</label>
-                </div>
-                
                 <div class='text-center'>
                     <button type="submit" class="btn btn-primary px-5">Submit</button>
                 </div>
+            </div>
             </form>
         </div>
+    </div>
     </div>
     
 </body>

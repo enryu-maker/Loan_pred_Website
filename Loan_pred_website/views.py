@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from . import predict
 # Create your views here.
 
 def home(request):
@@ -23,7 +24,18 @@ def results(request):
     Property_type: p_type
     """
     if request.POST:
+        p = predict.Predector()
         form_data = request.POST
-        return render(request, 'Loan_pred_website/results.html', form_data)
+        # try:
+        udata = [form_data['gender'], form_data['m_status'], float(form_data['dep']), form_data['edu_status'], form_data['self_emp'],
+                float(form_data['income']), float(form_data['coincome']), float(form_data['l_amount']), float(form_data['l_term']), 
+                float(form_data['c_history']), form_data['p_type']]
+        # except Exception as e:
+        #     return HttpResponse(f"<center> <H1> DATA ERROR <H1> <br> {e}</center>") #can be changed to return an error on the input page itself #only for debugging 
+        
+        pred = p.predetor(udata)
+        print(pred)
+        return render(request, 'Loan_pred_website/results.html', {'result' : pred})
+    
     else:
         return redirect('LP-home')
